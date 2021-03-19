@@ -10,7 +10,8 @@ const Router = require('./posts/posts-router');
 server.use('/api/posts', Router);
 
 server.get('/', (req, res) => {
-    res.send(`Welcome to the post API`);
+    const motd = process.env.MOTD || " Hello Everyone!!";
+    res.status(200).json({ motd: motd });
 })
 
 module.exports = server;
